@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <link href="images/favicon.ico" rel="shortcut icon" sizes="128x128">
+    <title>VS Code</title>
+    <link href="css/stylesheet.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <header>
+        <div class="main-container">
+            <div class="logo-flex-container">
+                <div class="logo"></div>
+                <div class="big-logo-text">VS Code</div>
+            </div>
+            <div class="small-logo-text">
+                The editor in which this site is made
+            </div>
+        </div>
+    </header>
+
+    <div class="section">
+        <div class="main-container">
+            <div class="column-flex-container">
+                <a href="https://code.visualstudio.com/#meet-intellisense" class="column">
+                    <img class="column-image" src="images/intellisense.svg" alt="Intellisense">
+                    <article class="column-text">
+                        <h2>Meet IntelliSense.</h2>
+                        Go beyond syntax highlighting and autocomplete with IntelliSense,
+                        which provides smart completions based on variable types,
+                        function definitions, and imported modules.
+                    </article>
+                </a>
+                <a href="https://code.visualstudio.com/#powerful-debugging" class="column">
+                    <img class="column-image" src="images/debug.svg" alt="Debugging">
+                    <article class="column-text">
+                        <h2>Print statement debugging is a thing of the past.</h2>
+                        Debug code right from the editor. Launch or attach to your running apps and debug with
+                        break points, call stacks, and an interactive console.
+                    </article>
+                </a>
+                <a href="https://code.visualstudio.com/#built-in-git" class="column">
+                    <img class="column-image" src="images/git.svg" alt="Git">
+                    <article class="column-text">
+                        <h2>Git commands built-in.</h2>
+                        Working with Git and other SCM providers has never been easier. Review diffs, stage files, and
+                        make
+                        commits right from the editor. Push and pull from any hosted SCM service.
+                    </article>
+                </a>
+                <a href="https://code.visualstudio.com/#deploy" class="column">
+                    <img class="column-image" src="images/azure.svg" alt="Azure">
+                    <article class="column-text">
+                        <h2>Deploy with confidence and ease.</h2>
+                        With Microsoft Azure you can deploy and host your React, Angular, Vue, Node, Python (and more!)
+                        sites, store and query relational and document based data, and scale with serverless computing,
+                        all
+                        with ease, all from within VS Code.
+                    </article>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="main-container">
+            <form method="post" action="https://code.visualstudio.com">
+                <h1>Using VS Code? Share your experience!</h1>
+
+                <fieldset>
+                    <legend>What technology are you using?</legend>
+                    <ul>
+                        <li>
+                            <label>
+                                <input type="checkbox" name="js" checked> JavaScript
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox" name="html" checked> HTML
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox" name="css" checked> CSS
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox" name="cs"> C#
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox" name="sql"> SQL
+                            </label>
+                        </li>
+                    </ul>
+                </fieldset>
+
+                <fieldset>
+                    <legend>What is your operating system?</legend>
+                    <ul>
+                        <li>
+                            <label>
+                                <input type="radio" name="technology" value="win" checked> Windows
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="technology" value="mac"> MacOS
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="technology" value="linux"> Linux
+                            </label>
+                        </li>
+                    </ul>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Something about you?</legend>
+                    <ul>
+                        <li>
+                            <label for="profession-select">
+                                Your profession: <br>
+                            </label>
+                            <select name="profession" id="profession-select">
+                                <option value="backend">Backend developer</option>
+                                <option value="data-analyst">Data analyst</option>
+                                <option value="devops">DevOps engineer</option>
+                                <option value="frontend" selected>Frontend developer</option>
+                                <option value="system-administrator">System administrator</option>
+                                <option value="system-analyst">System analyst</option>
+                                <option value="tester">Tester</option>
+                            </select>
+
+                        </li>
+
+                        <li>
+                            <label>
+                                Your email: <br>
+                                <input type="email" name="email" placeholder="user.example@gmail.com">
+                            </label>
+                        </li>
+                    </ul>
+                </fieldset>
+
+                <button type="submit">Share experience</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="small-footer-text">
+            Copyright © 2023
+            &emsp;
+            <a href="https://github.com/zeytunyan">
+                Georgiy Zeytunyan
+            </a>
+            &emsp;
+            All Rights Reserved
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+@charset "UTF-8";
+
+/*background-color: #21242B;*/
+/* border-bottom: 1px solid snow;*/
+
+body {
+  background-image: linear-gradient(150deg, #333844 0%, #2a2e39 100%);
+  color: #d1d1d1;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+}
+
+.main-container {
+  width: 80%;
+  margin: auto;
+}
+
+/*
+Здесь был тег section, но валидатор требует, 
+чтобы у него был заголовок <h1>-<h6>, 
+поэтому я сделал вместо section'a div c class="section"
+*/
+header,
+.section {
+  padding-top: 2vh;
+  padding-bottom: 3vh;
+  box-sizing: border-box;
+}
+
+.logo-flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 12vmin;
+  height: 12vmin;
+  margin: 3vmin;
+  background-image: url(../images/logo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.big-logo-text {
+  font-size: 5vmin;
+  margin: 1vmin;
+  white-space: nowrap;
+}
+
+.small-logo-text {
+  font-style: italic;
+  font-size: 2.5vmin;
+  text-align: center;
+}
+
+.column-flex-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex-basis: 23%;
+  min-width: 300px;
+  background-color: #333844;
+  border: 1px solid #72777d;
+  margin: 5px 2px;
+}
+
+.column:hover {
+  background: #3d4252;
+  transform: scale(1.01);
+}
+
+a.column {
+  text-decoration: none;
+}
+
+.column-image {
+  width: 60%;
+  margin: 20% 20% 10% 20%;
+}
+
+.column h2 {
+  height: 4em;
+}
+
+.column-text {
+  padding: 0 13% 8% 13%;
+}
+
+form {
+  padding: 4vh;
+  border: 2px solid #21242b;
+  margin: 5vh auto 10vh auto;
+  border-radius: 1rem;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+form > h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 8vh;
+}
+
+fieldset {
+  border: 1px solid #72777d;
+  margin: 5vh auto;
+  width: 80%;
+}
+
+legend {
+  font-size: 1.1rem;
+}
+
+
+fieldset > ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+fieldset > ul > li {
+  margin: 1rem;
+}
+
+li select,
+li input[type="email"] {
+  margin: 1rem 0;
+  width: 40vmin;
+}
+
+button[type="submit"] {
+  background: #4875ca;
+  color: snow;
+  padding: 0.6em 2em;
+  border-radius: 0.3em;
+  border: 1px solid #3d4252;
+  font-size: 1.2rem;
+  display: block;
+  margin: 3vh auto;
+}
+
+button[type="submit"]:hover {
+  background: #5280d4;
+  cursor: pointer;
+}
+
+footer {
+  width: 100%;
+  height: 5vmin;
+  background-color: #21242b;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  border-top: 2px solid #181a21;
+}
+
+.small-footer-text {
+  font-size: 1.7vmin;
+  margin: 1.5vmin auto;
+  text-align: center;
+}
