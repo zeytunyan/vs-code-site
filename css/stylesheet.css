@@ -1,8 +1,5 @@
 @charset "UTF-8";
 
-/*background-color: #21242B;*/
-/* border-bottom: 1px solid snow;*/
-
 body {
   background-image: linear-gradient(150deg, #333844 0%, #2a2e39 100%);
   color: #d1d1d1;
@@ -62,24 +59,31 @@ header,
 
 .column-flex-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
 .column {
   flex-basis: 23%;
   min-width: 300px;
-  background-color: #333844;
-  border: 1px solid #72777d;
   margin: 5px 2px;
 }
 
-.column:hover {
+.column,
+.course {
+  background-color: #333844;
+  border: 1px solid #72777d;
+}
+
+.column:hover,
+.course:hover {
   background: #3d4252;
   transform: scale(1.01);
 }
 
-a.column {
+a.logo-flex-container,
+a.column,
+a.course {
   text-decoration: none;
 }
 
@@ -88,7 +92,7 @@ a.column {
   margin: 20% 20% 10% 20%;
 }
 
-.column h2 {
+.column-text > h2 {
   height: 4em;
 }
 
@@ -99,13 +103,13 @@ a.column {
 form {
   padding: 4vh;
   border: 2px solid #21242b;
-  margin: 5vh auto 10vh auto;
+  margin: 5vh auto;
   border-radius: 1rem;
   width: 90%;
   box-sizing: border-box;
 }
 
-form > h1 {
+h1 {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 8vh;
@@ -120,7 +124,6 @@ fieldset {
 legend {
   font-size: 1.1rem;
 }
-
 
 fieldset > ul {
   list-style-type: none;
@@ -153,13 +156,39 @@ button[type="submit"]:hover {
   cursor: pointer;
 }
 
+.courses-container {
+  max-height: 70vh;
+  overflow: scroll;
+  margin-bottom: 1vh;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+}
+
+.courses-container::-webkit-scrollbar {
+  display: none;
+}
+
+.course {
+  display: block;
+  width: 56%;
+  margin: 2vmin auto;
+  border-radius: 0.6em;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.course-image {
+  background-size: contain;
+  height: 17vmin;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 1.5rem;
+}
+
 footer {
   width: 100%;
   height: 5vmin;
   background-color: #21242b;
-  position: fixed;
-  left: 0;
-  bottom: 0;
   border-top: 2px solid #181a21;
 }
 
