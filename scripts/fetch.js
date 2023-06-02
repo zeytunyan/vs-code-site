@@ -1,5 +1,7 @@
-refreshCourses();
-setInterval(refreshCourses, 3600000);
+'use strict'
+
+// Браузер не дает здесь использовать await 
+refreshCourses().then(() => setInterval(refreshCourses, 3600000));
 
 async function refreshCourses() {
   const courses = await fetchCourses();
@@ -55,7 +57,7 @@ function createCourseElement(imgUrl, titleText, url) {
   const courseElement = document.createElement("a");
   courseElement.classList.add("course");
   courseElement.href = url;
-  
+
   courseElement.append(courseImage);
   courseElement.append(courseTitle);
 
