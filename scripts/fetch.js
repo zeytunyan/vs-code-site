@@ -1,7 +1,14 @@
 'use strict'
 
-// Браузер не дает здесь использовать await 
-refreshCourses().then(() => setInterval(refreshCourses, 3600000));
+start();
+
+async function start() {
+
+  await refreshCourses();
+
+  setInterval(refreshCourses, 3600000);
+
+}
 
 async function refreshCourses() {
   const courses = await fetchCourses();

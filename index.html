@@ -66,93 +66,7 @@
     </div>
 
     <div class="section">
-        <div class="main-container">
-            <form method="post" action="https://code.visualstudio.com">
-                <h1>Using VS Code? Share your experience!</h1>
-
-                <fieldset>
-                    <legend>What technology are you using?</legend>
-                    <ul>
-                        <li>
-                            <label>
-                                <input type="checkbox" name="js" checked> JavaScript
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="checkbox" name="html" checked> HTML
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="checkbox" name="css" checked> CSS
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="checkbox" name="cs"> C#
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="checkbox" name="sql"> SQL
-                            </label>
-                        </li>
-                    </ul>
-                </fieldset>
-
-                <fieldset>
-                    <legend>What is your operating system?</legend>
-                    <ul>
-                        <li>
-                            <label>
-                                <input type="radio" name="technology" value="win" checked> Windows
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="technology" value="mac"> MacOS
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="technology" value="linux"> Linux
-                            </label>
-                        </li>
-                    </ul>
-                </fieldset>
-
-                <fieldset>
-                    <legend>Something about you?</legend>
-                    <ul>
-                        <li>
-                            <label for="profession-select">
-                                Your profession: <br>
-                            </label>
-                            <select name="profession" id="profession-select">
-                                <option value="backend">Backend developer</option>
-                                <option value="data-analyst">Data analyst</option>
-                                <option value="devops">DevOps engineer</option>
-                                <option value="frontend" selected>Frontend developer</option>
-                                <option value="system-administrator">System administrator</option>
-                                <option value="system-analyst">System analyst</option>
-                                <option value="tester">Tester</option>
-                            </select>
-
-                        </li>
-
-                        <li>
-                            <label>
-                                Your email: <br>
-                                <input type="email" name="email" placeholder="user.example@gmail.com">
-                            </label>
-                        </li>
-                    </ul>
-                </fieldset>
-
-                <button type="submit">Share experience</button>
-            </form>
-        </div>
+        <div class="main-container" id="react-form-container"></div>
     </div>
 
     <div class="section">
@@ -178,7 +92,195 @@
             All Rights Reserved
         </div>
     </footer>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+    <script type="text/babel">
+
+        class ManagedReactForm extends React.Component {
+
+            // Данные для контролов
+            technologyList = ['Javascript', 'HTML', 'CSS', 'C#', 'SQL'];
+            osList = ['Windows', 'MacOS', 'Linux'];
+            professionList = [
+                'Backend developer',
+                'Data analyst',
+                'DevOps engineer',
+                'Frontend developer',
+                'System administrator',
+                'System analyst',
+                'Tester'
+            ];
+            emailPlaceholder = "user.example@gmail.com";
+
+            constructor(props) {
+                super(props);
+
+                // Сразу формируем state c установленными дефолтными значениями
+                this.state = {
+                    // Если это Map, то удобнее хранить вместе с названием bool, показывающий, выбрано или нет
+                    technologies: new Map(
+                        this.technologyList.map(
+                            // Изначально отмечены первые три флажка (HTML, CSS, Javascript)
+                            (tecnology, index) => [tecnology, index < 3]
+                        )
+                    ),
+                    // Изначально отмечена первая ос - Windows
+                    os: this.osList[0],
+                    // Изначально отмечена третья профессия - Frontend developer
+                    profession: this.professionList[3],
+                    // Изначально пустой email
+                    email: ''
+                };
+
+                this.changeTechnology = this.changeTechnology.bind(this);
+                this.changeOs = this.changeOs.bind(this);
+                this.changeProfession = this.changeProfession.bind(this);
+                this.changeEmail = this.changeEmail.bind(this);
+                this.showAlert = this.showAlert.bind(this);
+            }
+
+
+            changeTechnology(event) {
+                const technologyName = event.target.name;
+
+                this.setState(
+                    prevState => {
+                        // Инвертируем bool-значение для этого флажка
+                        const newTechnologiesMap = prevState.technologies;
+                        const oldValue = newTechnologiesMap.get(technologyName);
+                        newTechnologiesMap.set(technologyName, !oldValue);
+
+                        return {
+                            ...prevState,
+                            technologies: newTechnologiesMap
+                        }
+                    }
+                );
+            }
+
+            changeOs(event) {
+                const newOs = event.target.value;
+
+                this.setState(prevState => ({ ...prevState, os: newOs }));
+            }
+
+            changeProfession(event) {
+                const newProfession = event.target.value;
+
+                this.setState(prevState => ({ ...prevState, profession: newProfession }));
+            }
+
+            changeEmail(event) {
+                const newEmail = event.target.value;
+
+                this.setState(prevState => ({ ...prevState, email: newEmail }));
+            }
+
+            showAlert(event) {
+                event.preventDefault();
+
+                const ts = this.state;
+
+                // Преобразуем Map в строку
+                let checkedTechnologies = Array.from(ts.technologies)
+                    .filter(technology => technology[1])
+                    .map(technology => technology[0])
+                    .join(', ');
+
+                // Выводим сообщение с выбранными данными
+                alert(`Your experience:
+    Your technologies - ${checkedTechnologies || 'no technologies'}
+    Your operating system - ${ts.os}
+    Your profession - ${ts.profession}
+    Your email - ${ts.email || 'no email'} 
+
+Thank you!`);
+            }
+
+            render() {
+                // У меня во всех коллекциях сами значения должны быть уникальны, 
+                // и, по идее, можно сделать их ключами
+                // для удобства я так и сделал, надеюсь, это не ошибка
+                const technologiesArray = Array.from(this.state.technologies.entries());
+
+                const technologyCheckboxes = technologiesArray.map(
+                    technology => (
+                        <li key={technology[0]}>
+                            <label>
+                                <input type="checkbox" name={technology[0]} checked={technology[1]} onChange={this.changeTechnology} />
+                                {technology[0]}
+                            </label>
+                        </li>
+                    )
+                );
+
+                const osRadios = this.osList.map(
+                    (os, index) => (
+                        <li key={os}>
+                            <label>
+                                <input type="radio" name="os" value={os} checked={os === this.state.os} onChange={this.changeOs} />
+                                {os}
+                            </label>
+                        </li>
+                    )
+                );
+
+                const professionOptions = this.professionList.map(
+                    profession => (
+                        <option key={profession} value={profession} selected={profession === this.state.profession}>
+                            {profession}
+                        </option>
+                    )
+                );
+
+                return (
+                    <form onSubmit={this.showAlert} >
+                        <h1>Using VS Code? Share your experience!</h1>
+
+                        <fieldset>
+                            <legend>What technologies are you using?</legend>
+                            <ul> {technologyCheckboxes} </ul>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>What is your operating system?</legend>
+                            <ul>{osRadios}</ul>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Something about you?</legend>
+                            <ul>
+                                <li>
+                                    <label for="profession-select">
+                                        Your profession: <br />
+                                    </label>
+                                    <select name="profession" id="profession-select" onChange={this.changeProfession}>
+                                        {professionOptions}
+                                    </select>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        Your email: <br />
+                                        <input type="email" name="email" placeholder={this.emailPlaceholder} value={this.state.email} onChange={this.changeEmail} />
+                                    </label>
+                                </li>
+                            </ul>
+                        </fieldset>
+
+                        <button type="submit">Share experience</button>
+                    </form>
+                );
+            }
+        }
+
+        ReactDOM.render(<ManagedReactForm />, document.getElementById("react-form-container"));
+    </script>
+
     <script src="scripts/fetch.js"></script>
+
 </body>
 
 </html>
